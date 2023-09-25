@@ -4,7 +4,29 @@ https://github.com/CenterForTheBuiltEnvironment/comfort_tool.git
 
 https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-python-service
 
-## PROJECT: comfort-tool-heidless
+## RUN/INSTALL
+```
+# local
+gunicorn comfort:app --reload
+
+# docker
+docker build . -t comfort-tool
+
+docker run --rm --name comfort-tool -e PORT=3000 -p 3000:3000 comfort-tool
+
+# access docker shell
+docker exec -it comfort-tool bash
+
+# check exists
+docker image ls
+
+# gcloud
+
+gcloud builds submit --tag gcr.io/pfolio-deploy-1/comfort-tool
+
+gcloud run deploy --image gcr.io/pfolio-deploy-1/comfort-tool --platform managed --port=3000
+
+```
 
 
 
